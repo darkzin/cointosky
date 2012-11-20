@@ -1,0 +1,9 @@
+package com.skyseed.androidgames.cointosky;
+
+public class Coin {
+  private int balance = 0;
+
+  public Coin(int coinBalance){
+    balance = coinBalance;
+  }
+}

@@ -1,0 +1,17 @@
+package com.skyseed.androidgames.cointosky;
+
+import com.skyseed.androidgames.framework.Pixmap;
+import com.skyseed.androidgames.framework.Sound;
+
+public class Assets {
+    public static Pixmap background;
+    public static Pixmap logo;
+    public static Pixmap mainMenu;
+    public static Pixmap coin;
+    public static Pixmap drop_coin;
+    public static Pixmap first_coin;   
+    
+    public static Sound click;
+    public static Sound eat;
+    public static Sound bitten;
+}

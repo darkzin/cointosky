@@ -1,0 +1,14 @@
+package com.skyseed.androidgames.cointosky;
+
+public class BalanceBar {
+  
+
+  static final float BALANCEBAR_TICK_INITIAL = 0.5f;
+  static final float BALANCEBAR_TICK_DECREMENT = 0.05f;
+
+  public int currentMarking = 0;
+  public float balanceBarTick = BALANCEBAR_TICK_INITIAL;
+  
+  public BalanceBar(){
+  }
+}
