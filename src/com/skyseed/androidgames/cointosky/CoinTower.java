@@ -9,6 +9,7 @@ public class CoinTower {
   public int coinCount;
   public int towerBalance;
   public int towerHeight;
+  
   public List<Coin> coins = new ArrayList<Coin>();
     
   public CoinTower() {        

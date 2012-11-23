@@ -19,17 +19,16 @@ public class MainMenuScreen extends GLScreen {
     Rectangle soundBounds;
     Rectangle playBounds;
     Rectangle highscoresBounds;
-    Rectangle helpBounds;
     Vector2 touchPoint;
 
     public MainMenuScreen(Game game) {
         super(game);
-        guiCam = new Camera2D(glGraphics, 320, 480);
+        guiCam = new Camera2D(glGraphics, 720, 1200);
         batcher = new SpriteBatcher(glGraphics, 100);
         soundBounds = new Rectangle(0, 0, 64, 64);
-        playBounds = new Rectangle(160 - 150, 200 + 18, 300, 36);
-        highscoresBounds = new Rectangle(160 - 150, 200 - 18, 300, 36);
-        helpBounds = new Rectangle(160 - 150, 200 - 18 - 36, 300, 36);
+        playBounds = new Rectangle(360 - 196, 500, 392, 64);
+        highscoresBounds = new Rectangle(360 - 201, 600, 402, 78);
+        //helpBounds = new Rectangle(160 - 150, 200 - 18 - 36, 300, 36);
         touchPoint = new Vector2();               
     }       
 
@@ -50,16 +49,19 @@ public class MainMenuScreen extends GLScreen {
                     game.setScreen(new GameScreen(game));
                     return;
                 }
+
                 if(OverlapTester.pointInRectangle(highscoresBounds, touchPoint)) {
                     Assets.playSound(Assets.clickSound);
                     //game.setScreen(new HighscoresScreen(game));
                     return;
                 }
+
                 if(OverlapTester.pointInRectangle(helpBounds, touchPoint)) {
                     Assets.playSound(Assets.clickSound);
                     //game.setScreen(new HelpScreen(game));
                     return;
                 }
+
                 if(OverlapTester.pointInRectangle(soundBounds, touchPoint)) {
                     Assets.playSound(Assets.clickSound);
                     Settings.soundEnabled = !Settings.soundEnabled;
@@ -81,7 +83,8 @@ public class MainMenuScreen extends GLScreen {
         gl.glEnable(GL10.GL_TEXTURE_2D);
         
         batcher.beginBatch(Assets.background);
-        batcher.drawSprite(160, 240, 320, 480, Assets.backgroundRegion);
+        batcher.drawSprite(360, 600, 720, 1200, Assets.backgroundRegion);
+        batcher.drawSprite(360, 900, 394, 286, Assets.city);
         batcher.endBatch();
         
         gl.glEnable(GL10.GL_BLEND);
@@ -89,9 +92,10 @@ public class MainMenuScreen extends GLScreen {
         
         batcher.beginBatch(Assets.items);                 
         
-        batcher.drawSprite(160, 480 - 10 - 71, 274, 142, Assets.logo);
-        //batcher.drawSprite(160, 200, 300, 110, Assets.mainMenu);
-        //batcher.drawSprite(32, 32, 64, 64, Settings.soundEnabled?Assets.soundOn:Assets.soundOff);
+        batcher.drawSprite(320, 256, 286, 190, Assets.logo);
+        batcher.drawSprite(320, 700 - 32, 392, 64, Assets.gameStartBtn);
+        batcher.drawSprite(320, 600 - 32, 392, 64, Assets.highScoreBtn);
+        batcher.drawSprite(32, 32, 64, 64, Settings.soundEnabled?Assets.soundOnBtn:Assets.soundOffBtn);
                 
         batcher.endBatch();
         

@@ -11,7 +11,7 @@ public class CoinToSkyGame extends GLGame {
     
     @Override
     public Screen getStartScreen() {
-        return new GameScreen(this);
+        return new MainMenuScreen(this);
     }
     
     @Override

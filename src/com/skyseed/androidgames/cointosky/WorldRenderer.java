@@ -9,8 +9,8 @@ import com.skyseed.androidgames.framework.gl.TextureRegion;
 import com.skyseed.androidgames.framework.impl.GLGraphics;
 
 public class WorldRenderer {
-    static final float FRUSTUM_WIDTH = 10;
-    static final float FRUSTUM_HEIGHT = 15;    
+    static final float FRUSTUM_WIDTH = 720;
+    static final float FRUSTUM_HEIGHT = 1200;    
     GLGraphics glGraphics;
     World world;
     Camera2D cam;
@@ -48,7 +48,16 @@ public class WorldRenderer {
         //batcher.endBatch();
         gl.glDisable(GL10.GL_BLEND);
     }
+  private void renderBalanceBar() {
+    int balanceBarWidth = world.balanceBar.width;
+    int balance = world.balance;
+    int balance_max = world.
+    bacher.drawSprite(320, 1200 - 64, balanceBarWidth, 64, Assets.balanceBar);
+
+    if(world.state == world.WORLD_STATE_BALANCING){
+      
     
+  }
   /*    private void renderBob() {
         TextureRegion keyFrame;
         switch(world.bob.state) {

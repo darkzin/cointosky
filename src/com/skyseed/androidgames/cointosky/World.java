@@ -20,17 +20,24 @@ public class World {
 
   public static final float WORLD_WIDTH = 10;
   public static final float WORLD_HEIGHT = 15 * 20;
-  public static final int WORLD_STATE_RUNNING = 0;
-  public static final int WORLD_STATE_NEXT_LEVEL = 1;
+  public static final int WORLD_STATE_BALANCING = 0;
+  public static final int WORLD_STATE_DROP_COIN = 1;
   public static final int WORLD_STATE_GAME_OVER = 2;
+  public static final int BALANCE_MAX = 20;
   public static final Vector2 gravity = new Vector2(0, -12);
 
-  //public final CoinTower coinTower;
-  //public final Coin coin;
+  public final CoinTower coinTower;
+
+  public final int balance;
+  public final int dirBalance;
+  public final float energy;
+  public final float fever;
+  
+  public final Coin coin;
   public final WorldListener listener;
   public final Random rand;
 
-  public float heightSoFar;
+  //public float heightSoFar;
   public int score;
   public int state;
 
@@ -40,6 +47,16 @@ public class World {
     this.springs = new ArrayList<Spring>();
     this.squirrels = new ArrayList<Squirrel>();
     this.coins = new ArrayList<Coin>();*/
+
+    this.coinTower = new CoinTower();
+    this.coin = new Coin(320, 1200);
+    this.balance = 0;
+    this.dirBalance = 1;
+    this.energy = 100;
+    this.fever = 0;
+    
+
+    this.state = WORLD_STATE_DROP_COIN;
     this.listener = listener;
     rand = new Random();
     //generateLevel();
@@ -57,7 +74,26 @@ public class World {
     if (bob.state != Bob.BOB_STATE_HIT)
       checkCollisions();
       checkGameOver();*/
+    
+    
+    if (this.state == WORLD_STATE_DROP_COIN)
+      updateCoin();
+
+    else
+      updateBalanceBar(deltaTime);
+    
+    checkGameOver();
   }
+
+  public void updateBalanceBar(float deltaTime){
+    this.balance += dirBalance;
+  }
+
+  public void updateCoin(float deltaTime){
+    coin.update(deltaTime);
+  }
+
+  
   /*
   private void updateBob(float deltaTime, float accelX) {
     if (bob.state != Bob.BOB_STATE_HIT && bob.position.y <= 0.5f)

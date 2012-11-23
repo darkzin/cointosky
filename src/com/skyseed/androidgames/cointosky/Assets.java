@@ -11,6 +11,8 @@ import com.skyseed.androidgames.framework.impl.GLGame;
 public class Assets {
   public static Texture background;
   public static TextureRegion backgroundRegion;
+  public static TextureRegion light;
+  public static TextureRegion city;
     
   public static Texture items;
   public static TextureRegion floor;
@@ -21,6 +23,12 @@ public class Assets {
   public static TextureRegion feverBar;
   public static TextureRegion energy;
   public static TextureRegion fever;
+  public static TextureRegion backBtn;
+  public static TextureRegion gameStartBtn;
+  public static TextureRegion highScoreBtn;
+  public static TextureRegion soundOnBtn;
+  public static TextureRegion soundOffBtn;
+  public static TextureRegion mascot;
   public static Animation balancePoint;
   
   /*public static TextureRegion mainMenu;
@@ -54,6 +62,8 @@ public class Assets {
   public static void load(GLGame game) {
     background = new Texture(game, "background.png");
     backgroundRegion = new TextureRegion(background, 0, 0, 480, 800);
+    light = new TextureRegion(background, 874, 0, 150, 636);
+    city = new TextureRegion(background, 360, 0, 394, 286);
         
     items = new Texture(game, "items.png");        
 

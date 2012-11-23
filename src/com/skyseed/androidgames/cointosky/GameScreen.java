@@ -39,7 +39,7 @@ public class GameScreen extends GLScreen {
     public GameScreen(Game game) {
         super(game);
         state = GAME_READY;
-        guiCam = new Camera2D(glGraphics, 480, 800);
+        guiCam = new Camera2D(glGraphics, 720, 1200);
         touchPoint = new Vector2();
         batcher = new SpriteBatcher(glGraphics, 1000);
         worldListener = new WorldListener() {
@@ -65,9 +65,9 @@ public class GameScreen extends GLScreen {
         };
         world = new World(worldListener);
         renderer = new WorldRenderer(glGraphics, batcher, world);
-        pauseBounds = new Rectangle(320- 64, 480- 64, 64, 64);
-        resumeBounds = new Rectangle(160 - 96, 240, 192, 36);
-        quitBounds = new Rectangle(160 - 96, 240 - 36, 192, 36);
+        // pauseBounds = new Rectangle(320- 64, 480- 64, 64, 64);
+        // resumeBounds = new Rectangle(160 - 96, 240, 192, 36);
+        // quitBounds = new Rectangle(160 - 96, 240 - 36, 192, 36);
         lastScore = 0;
         scoreString = "score: 0";
         fpsCounter = new FPSCounter();
@@ -114,14 +114,15 @@ public class GameScreen extends GLScreen {
 	        touchPoint.set(event.x, event.y);
 	        guiCam.touchToWorld(touchPoint);
 	        
-	        if(OverlapTester.pointInRectangle(pauseBounds, touchPoint)) {
+	        /*if(OverlapTester.pointInRectangle(pauseBounds, touchPoint)) {
 	            Assets.playSound(Assets.clickSound);
 	            state = GAME_PAUSED;
 	            return;
-	        }            
+                    } */           
 	    }
 	    
-	    world.update(deltaTime, game.getInput().getAccelX());
+	    world.update(deltaTime, .getInput().getAccelX());
+            
 	    if(world.score != lastScore) {
 	        lastScore = world.score;
 	        scoreString = "" + lastScore;
@@ -230,11 +231,11 @@ public class GameScreen extends GLScreen {
 	}
 	
 	private void presentRunning() {
-          batcher.drawSprite(240, 800-32, 353, 32, Assets.balanceBar);
-          batcher.drawSprite(64, 800-96, 353, 32, Assets.balanceBar);
-          batcher.drawSprite(240, 800-32, 353, 32, Assets.balanceBar);
-          batcher.drawSprite(240, 800-32, 353, 32, Assets.balanceBar);
-          batcher.drawSprite(240, 800-32, 353, 32, Assets.balanceBar);
+          batcher.drawSprite(320, 1200 - 32, 353, 32, Assets.balanceBar);
+          //batcher.drawSprite(64, 600, 300, , Assets.balanceBar);
+          //batcher.drawSprite(240, 800-32, 353, 32, Assets.balanceBar);
+          //batcher.drawSprite(240, 800-32, 353, 32, Assets.balanceBar);
+          //batcher.drawSprite(240, 800-32, 353, 32, Assets.balanceBar);
           //Assets.font.drawText(batcher, scoreString, 16, 480-20);
 	}
 	
